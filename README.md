@@ -13,6 +13,8 @@ CCL2019“小牛杯”中文幽默计算
     |-- models
         |--Machine_Learning
         |--Deep_Learning
+    |-- word_embedding
+        |--Word2Vec.py       # Word2Vec
     |-- main.py              # 模型训练和测试
     |-- preprocessing.py     # 预处理
 
