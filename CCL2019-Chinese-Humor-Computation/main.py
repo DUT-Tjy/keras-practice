@@ -3,6 +3,7 @@ from keras.layers import Dense, Bidirectional, Embedding, Dropout, LSTM
 from keras.optimizers import Adam
 import preprocessing
 import pandas as pd
+import numpy as np
 from keras.utils.np_utils import to_categorical
 from word_embedding.Word2Vec import word2vec_weight
 from models.Machine_Learning.TF_IDF import TF_IDF
@@ -108,11 +109,13 @@ model.add(Dense(2, activation='softmax'))
 optimizer = Adam(lr=0.005)
 model.compile(loss='categorical_crossentropy', optimizer=optimizer, metrics=['accuracy'])
 
-model.fit(X_train, y_train, batch_size=128, epochs=10)
+model.fit(X_train, y_train, batch_size=128, epochs=1)
 
 pred = model.predict(X_dev)
 
-print(f1_score(y_dev, pred))
+print(f1_score(y_dev, np.argmax(pred, axis=1), average='macro'))
+
+
 
 
 
